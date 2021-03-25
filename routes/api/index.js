@@ -1,6 +1,19 @@
 const router = require('express').Router();
+const { Location, Traveller, Trips } = require('../../models');
 
-const travellersRoutes = require('./travellersRoutes');
+router.get("/", async (req, res) => {
+    try {
+        const locationData = await Location.findAll();
+        res.status(200).json(locationData);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+
+
+
+/* const travellersRoutes = require('./travellersRoutes');
 
 const locationsRoutes = require('./locationsRoutes');
 
@@ -10,6 +23,6 @@ router.use('/travellers', travellersRoutes);
 
 router.use('/locations', locationsRoutes);
 
-router.use('/trips', tripsRoutes);
+router.use('/trips', tripsRoutes); */
 
 module.exports = router;

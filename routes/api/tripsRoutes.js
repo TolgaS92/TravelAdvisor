@@ -1,12 +1,12 @@
-const { Trips } = require('../../models');
+const { Trip } = require('../../models');
 
 const router = require('express').Router();
 
 
 router.get("/", async (req, res) => {
     try {
-        const tripsData = await Trips.findAll();
-        res.status(200).json(tripsData);
+        const tripData = await Trip.findAll();
+        res.status(200).json(tripData);
     } catch (error) {
         res.status(500).json(error);
     }

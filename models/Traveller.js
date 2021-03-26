@@ -35,7 +35,7 @@ Traveller.init(
         },
     },
     {
-        hooks: {
+        /* hooks: {
             beforeCreate: async (newTraveller) => {
                 try {
                     newTraveller.password = await bcrypt.hash(newTraveller.password, 10);
@@ -54,7 +54,7 @@ Traveller.init(
                     return err;
                 }
             },
-        },
+        }, */
         sequelize,
         timestamps: false,
         freezeTableName: true,

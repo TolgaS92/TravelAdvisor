@@ -11,17 +11,19 @@ const Trip = require('./Trip');
 Traveller.belongsToMany(Location, 
     { 
         through:  {
-            model: Traveller,
+            model: Trip,
             unique: false,
         },
+        as: "booked!"
 });
 
 Location.belongsToMany(Traveller, 
     { 
         through:  {
-            model: Traveller,
+            model: Trip,
             unique: false,
         },
+        as: "trips_await"
 });
 
 

@@ -1,5 +1,4 @@
 const { Location } = require('../../models');
-const { sync } = require('../../models/Traveller');
 
 const router = require('express').Router();
 

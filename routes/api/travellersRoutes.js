@@ -14,26 +14,28 @@ router.get("/", async (req, res) => {
 });
 
 
-// It's done when the POST route `/api/travellers` creates traveller data and returns a successful response in Insomnia Core.
-router.post("/", async (req, res) => {
-    try {
-        const createTraveller = await Traveller.create(req.body);
-        res.status(200).json(createTraveller);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-
 // It's done when the GET route `/api/travellers/:id` returns a single traveller's data with their associated trips and a list of locations in Insomnia Core. 
 router.get ("/:id", async (req, res) => {
     try {
         const specificTraveller = await Traveller.findByPk(req.params.id);
         res.status(200).json(specificTraveller);
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err);
     }
 });
+
+
+
+// It's done when the POST route `/api/travellers` creates traveller data and returns a successful response in Insomnia Core.
+router.post("/", async (req, res) => {
+    try {
+        const createTraveller = await Traveller.create(req.body);
+        res.status(200).json(createTraveller);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 
 
 // It's done when the DELETE route `/api/travellers/:id` removes a traveller and any trips associated with them and returns a successful response in Insomnia Core.
@@ -46,7 +48,7 @@ router.delete("/:id", async (req, res) => {
         });
         res.status(200).json(travellerData);
     } catch (err) {
-        res.status(400).json(err)
+        res.status(500).json(err)
     }
 });
 

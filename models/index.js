@@ -9,7 +9,8 @@ const Trip = require('./Trip');
 
 
 Traveller.belongsToMany(Location, 
-    { 
+    {   
+        foreignKey: 'traveller_id',
         through:  {
             model: Trip,
             unique: false,
@@ -18,7 +19,8 @@ Traveller.belongsToMany(Location,
 });
 
 Location.belongsToMany(Traveller, 
-    { 
+    {   
+        foreignKey: 'location_id',
         through:  {
             model: Trip,
             unique: false,

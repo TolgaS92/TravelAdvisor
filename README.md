@@ -3,7 +3,7 @@
 ## Deployed application link
 
 - The main link will say Cannot GET/ because html didn't created yet
-  [main](https://floating-bayou-00821.herokuapp.com/)
+- [main](https://floating-bayou-00821.herokuapp.com/)
 
 ## Links for the deployed app
 

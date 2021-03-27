@@ -14,6 +14,8 @@
 
 [Travellers](https://floating-bayou-00821.herokuapp.com/api/travellers)
 
+1. If you add /1 /2 /3 after you click on the link above at the end of the webpage link, you will be getting information about the specific traveller nad their trips associated with it.
+
 ### Locations page link
 
 - /api/locations

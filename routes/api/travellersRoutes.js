@@ -1,13 +1,11 @@
 const router = require('express').Router();
 
-const { Traveller } = require('../../models');
+const { Traveller, Trip, Location } = require('../../models');
 
 
 // It's done when the GET route `/api/travellers` returns all traveller data without associated trips in Insomnia Core.
 router.get("/", async (req, res) => {
     try {
-        router.get("/", async (req, res) => {
-        });
         const travellerData = await Traveller.findAll();
         res.status(200).json(travellerData);
     } catch (error) {
@@ -20,7 +18,9 @@ router.get("/", async (req, res) => {
 // It's done when the GET route `/api/travellers/:id` returns a single traveller's data with their associated trips and a list of locations in Insomnia Core. 
 router.get ("/:id", async (req, res) => {
     try {
-        const specificTraveller = await Traveller.findByPk(req.params.id);
+        const specificTraveller = await Traveller.findByPk(req.params.id, {
+            include: [{ model: Location, through: Trip, as:'booked'}]
+        });
         res.status(200).json(specificTraveller);
     } catch (err) {
         res.status(500).json(err);

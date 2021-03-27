@@ -1,4 +1,4 @@
-const { Location } = require('../../models');
+const { Location, Traveller, Trip } = require('../../models');
 
 const router = require('express').Router();
 
@@ -17,7 +17,9 @@ router.get("/", async (req, res) => {
 // It's done when the GET route `/api/locations/:id` returns a single location's data, with its associated trips, in Insomnia Core. 
 router.get("/:id", async (req, res) => {
     try {
-        const locationData = await Location.findByPk(req.params.id);
+        const locationData = await Location.findByPk(req.params.id, {
+            include: [{ model: Traveller, through: Trip, as:'trips_await'}]
+        });
         res.status(200).json(locationData);
     } catch (error) {
         res.status(500).json(error);

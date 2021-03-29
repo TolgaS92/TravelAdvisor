@@ -2,7 +2,7 @@
 
 ## Deployed application link
 
-- The main link will say Cannot GET/ because html didn't created yet
+- The main link will Only show specific data from travellers/locations/trips..
 
 [main](https://floating-bayou-00821.herokuapp.com/)
 

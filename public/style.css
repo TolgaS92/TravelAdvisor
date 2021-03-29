@@ -1,0 +1,9 @@
+.bg-body {
+  background-image: url("https://raw.githubusercontent.com/TolgaS92/TravelAdvisor/main/public/assets/images/beach-wallpaper16.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.travelHead {
+  font-family: "Indie Flower", cursive;
+  font-weight: bolder;
+}

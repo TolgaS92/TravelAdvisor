@@ -26,9 +26,38 @@
         <div class="container">
           <h1 class="display-4 text-center mb-5 travelHead">TRAVEL ADVISOR</h1>
           <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary" id="travellers">Travellers</button>
-            <button type="button" class="btn btn-dark" id="locations">Locations</button>
-            <button type="button" class="btn btn-secondary" id="trips">Trips</button>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Travellers
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="travellers">Travellers</a>
+                <a class="dropdown-item" id="travellers1">Traveller 1</a>
+                <a class="dropdown-item" id="travellers2">Traveller 2</a>
+                <a class="dropdown-item" id="travellers3">Traveller 3</a>
+              </div>
+            </div>
+            <div class="dropdown"> 
+              <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Locations
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="locations">Locations</a>
+                <a class="dropdown-item">Location 2</a>
+                <a class="dropdown-item">Location 3</a>
+              </div>
+            </div>
+            <div class="dropdown"> 
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Trips
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="trips">Trips</a>
+                <a class="dropdown-item">Trip 1</a>
+                <a class="dropdown-item">Trip 2</a>
+                <a class="dropdown-item">Trip 3</a>
+              </div>
+            </div>
           </div>
         </div>
     </div>
@@ -45,9 +74,12 @@
         </div> -->
         </div>
       </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script type="text/javascript">
 
     /* Travellers Front end code */
+    
     let rowAppend = document.getElementById('listofthings');
     let travelFind = document.getElementById('travellers');
     const travellers = () => {
@@ -95,6 +127,142 @@
       });
     }
     travelFind.addEventListener('click', travellers);
+
+    let travelFind1 = document.getElementById('travellers1');
+    const travellers1 = () => {
+      fetch ('/api/travellers/1', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        rowAppend.innerHTML = "";
+          let firstDiv = document.createElement('div');
+          firstDiv.setAttribute('class', 'col-sm-4 mt-5');
+          let secondDiv = document.createElement('div');
+          secondDiv.setAttribute('class', 'card');
+          secondDiv.style.width = '22rem';
+          let thirdDiv = document.createElement('div');
+          thirdDiv.setAttribute('class', 'card-body');
+          let h2 = document.createElement('h2');
+          h2.setAttribute('class', 'text-center');
+          let h4First = document.createElement('h4');
+          h4First.setAttribute('class', 'card-title');
+          let h4Second = document.createElement('h4');
+          h4Second.setAttribute('class', 'card-title');
+          /* Appending card */
+          rowAppend.appendChild(firstDiv);
+          firstDiv.appendChild(secondDiv);
+          secondDiv.appendChild(thirdDiv);
+          thirdDiv.appendChild(h2);
+          thirdDiv.appendChild(h4First);
+          thirdDiv.appendChild(h4Second);
+          const { id, name, email } = data;
+          if(data) {
+            h2.textContent = data.id;
+            h4First.textContent = "Name: " + data.name;
+            h4Second.textContent = "E-mail: " + data.email;
+          } else {
+            pTag.textContent = 'Nothing to show';
+          }
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+    travelFind1.addEventListener('click', travellers1);
+
+    let travelFind2 = document.getElementById('travellers2');
+    const travellers2 = () => {
+      fetch ('/api/travellers/2', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        rowAppend.innerHTML = "";
+          let firstDiv = document.createElement('div');
+          firstDiv.setAttribute('class', 'col-sm-4 mt-5');
+          let secondDiv = document.createElement('div');
+          secondDiv.setAttribute('class', 'card');
+          secondDiv.style.width = '22rem';
+          let thirdDiv = document.createElement('div');
+          thirdDiv.setAttribute('class', 'card-body');
+          let h2 = document.createElement('h2');
+          h2.setAttribute('class', 'text-center');
+          let h4First = document.createElement('h4');
+          h4First.setAttribute('class', 'card-title');
+          let h4Second = document.createElement('h4');
+          h4Second.setAttribute('class', 'card-title');
+          /* Appending card */
+          rowAppend.appendChild(firstDiv);
+          firstDiv.appendChild(secondDiv);
+          secondDiv.appendChild(thirdDiv);
+          thirdDiv.appendChild(h2);
+          thirdDiv.appendChild(h4First);
+          thirdDiv.appendChild(h4Second);
+          const { id, name, email } = data;
+          if(data) {
+            h2.textContent = data.id;
+            h4First.textContent = "Name: " + data.name;
+            h4Second.textContent = "E-mail: " + data.email;
+          } else {
+            pTag.textContent = 'Nothing to show';
+          }
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+    travelFind2.addEventListener('click', travellers2);
+
+    let travelFind3 = document.getElementById('travellers3');
+    const travellers3 = () => {
+      fetch ('/api/travellers/3', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        rowAppend.innerHTML = "";
+          let firstDiv = document.createElement('div');
+          firstDiv.setAttribute('class', 'col-sm-4 mt-5');
+          let secondDiv = document.createElement('div');
+          secondDiv.setAttribute('class', 'card');
+          secondDiv.style.width = '22rem';
+          let thirdDiv = document.createElement('div');
+          thirdDiv.setAttribute('class', 'card-body');
+          let h2 = document.createElement('h2');
+          h2.setAttribute('class', 'text-center');
+          let h4First = document.createElement('h4');
+          h4First.setAttribute('class', 'card-title');
+          let h4Second = document.createElement('h4');
+          h4Second.setAttribute('class', 'card-title');
+          /* Appending card */
+          rowAppend.appendChild(firstDiv);
+          firstDiv.appendChild(secondDiv);
+          secondDiv.appendChild(thirdDiv);
+          thirdDiv.appendChild(h2);
+          thirdDiv.appendChild(h4First);
+          thirdDiv.appendChild(h4Second);
+          const { id, name, email } = data;
+          if(data) {
+            h2.textContent = data.id;
+            h4First.textContent = "Name: " + data.name;
+            h4Second.textContent = "E-mail: " + data.email;
+          } else {
+            pTag.textContent = 'Nothing to show';
+          }
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+    travelFind3.addEventListener('click', travellers3);
+
 
     /* Locations Front end code  */
 
